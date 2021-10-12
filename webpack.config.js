@@ -13,7 +13,6 @@ module.exports = (env, argv) => ({
     errorDetails: true,
   },
   entry: {
-    content: './src/content',
     background: './src/background',
     options: './src/options',
   },
