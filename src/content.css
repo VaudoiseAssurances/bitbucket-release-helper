@@ -1,0 +1,38 @@
+.rvb .linked-jira {
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+.rvb .linked-jira li {
+  list-style: none;
+  padding: 5px 0;
+  font-style: italic;
+}
+
+.rvb .linked-jira td {
+  vertical-align: middle;
+}
+
+.rvb .linked-jira .aui-icon {
+  margin-right: 5px;
+}
+
+/* PR - File explorer - Display a red dot when there is a comment on a file */
+.pull-request-content .file-tree li {
+  position: relative;
+}
+
+.pull-request-content .file-tree [title$='comments']:before {
+  content: '';
+  width: 6px;
+  background: #ee2106;
+  height: 6px;
+  position: absolute;
+  left: 20px;
+  top: 4px;
+  border-radius: 50%;
+}
+
+.pull-request-issues-trigger {
+  margin-left: 5px;
+}
