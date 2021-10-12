@@ -65,8 +65,6 @@ async function onAjaxedPages(callback: () => void) {
 // Rule assumes we don't want to leave it pending:
 // eslint-disable-next-line no-async-promise-executor
 const globalReady: Promise<GlobalOptions> = new Promise(async resolve => {
-
-  debugger;
   await safeElementReady('body');
 
   // Options defaults
@@ -77,8 +75,6 @@ const globalReady: Promise<GlobalOptions> = new Promise(async resolve => {
     bitbucketServer: '',
     ...(await new OptionsSync().getAll()),
   };
-
-debugger;
 
   if (options.customCSS.trim().length > 0) {
     document.head.append(<style>{options.customCSS}</style>);
