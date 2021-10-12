@@ -24,7 +24,7 @@ function getTransitionsMarkup(transitions: Transition[]) {
 }
 
 async function init() {
-  const selector = '.pull-request-details';
+  const selector = '.pull-request-activities';
 
   await waitForAjaxElement(selector);
 
@@ -95,10 +95,15 @@ async function init() {
     );
   });
 
-  document.querySelector(selector).parentElement.prepend(
-    <table className="linked-jira aui">
-      <tbody>{linkedIssuesHtml}</tbody>
-    </table>
+  const activitiesNode = document.querySelector(selector);
+  activitiesNode.parentElement.insertBefore(
+    <div>
+      <h3>Tickets</h3>
+      <table className="linked-jira aui">
+        <tbody>{linkedIssuesHtml}</tbody>
+      </table>
+    </div>,
+    activitiesNode
   );
 
   // Handle clicks on Jira transitions buttons
