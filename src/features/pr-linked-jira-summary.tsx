@@ -95,9 +95,16 @@ async function init() {
     );
   });
 
+  const issueIds = linkedIssues.map(linkedIssue => linkedIssue.key)
+    .join(`,`);
+
   const activitiesNode = document.querySelector(selector);
   activitiesNode.parentElement.insertBefore(
     <div>
+      <h3>Action: </h3>
+      <a href={`https://di.vaudoise.ch/issues/?jql=id in (${issueIds})`} target="_blank">
+        <button className="aui-button">Open issues in JIRA</button>
+      </a>
       <h3>Tickets</h3>
       <table className="linked-jira aui">
         <tbody>{linkedIssuesHtml}</tbody>
