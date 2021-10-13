@@ -14,6 +14,7 @@ module.exports = (env, argv) => ({
   },
   entry: {
     background: './src/background',
+    content: './src/content',
     options: './src/options',
   },
   output: {
