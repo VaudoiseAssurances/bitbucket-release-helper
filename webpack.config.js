@@ -26,9 +26,8 @@ module.exports = (env, argv) => ({
       {
         test: /\.(js|ts|tsx)$/,
         use: [
-          {
-            loader: 'ts-loader',
-          },
+          'babel-loader', // options are defined in babel.config.js
+          'ts-loader',
         ],
         exclude: /node_modules/,
       },
