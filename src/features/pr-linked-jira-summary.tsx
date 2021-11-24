@@ -69,9 +69,6 @@ async function init() {
     </div>,
     activitiesNode
   );
-
-  // Handle clicks on Jira transitions buttons
-  //delegate('.linked-jira .jira-transition', 'click', issueTransition);
 }
 
 features.add({
