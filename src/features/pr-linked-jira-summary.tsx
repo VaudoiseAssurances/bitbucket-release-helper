@@ -2,26 +2,6 @@ import React from 'dom-chef';
 import features from '../libs/features';
 import { prLinkedIssues } from '../libs/api';
 import { waitForAjaxElement } from '../libs/dom-utils';
-import { Transition } from '../entities/transition';
-
-function getTransitionsMarkup(transitions: Transition[]) {
-  const transitionList = transitions.map(transition => {
-    return (
-      <li key={transition.id}>
-        <a
-          className="jira-transition"
-          data-transition-id={transition.id}
-          href="#"
-        >
-          {transition.name}
-        </a>
-      </li>
-    );
-  });
-  return (
-    <ul className="jira-transitions aui-list-truncate">{transitionList}</ul>
-  );
-}
 
 async function init() {
   const selector = '.pull-request-activities';
@@ -35,28 +15,6 @@ async function init() {
   const linkedIssues = await prLinkedIssues();
 
   const linkedIssuesHtml = linkedIssues.map(linkedIssue => {
-    let transitionsWrapper;
-    if (linkedIssue.canTransition) {
-      let transitionHtmlId = `jira-more-transitions${linkedIssue.key}`;
-
-      // Jira transitions buttons
-      transitionsWrapper = (
-        <div>
-          <button
-            className="aui-button aui-dropdown2-trigger"
-            aria-controls={transitionHtmlId}
-          >
-            JIRA transitions
-          </button>
-          <div
-            id={transitionHtmlId}
-            className="aui-dropdown2 aui-style-default aui-layer"
-          >
-            {getTransitionsMarkup(linkedIssue.transitions)}
-          </div>
-        </div>
-      );
-    }
     return (
       <tr
         className="jira-issue-detailed"
@@ -90,7 +48,6 @@ async function init() {
             {linkedIssue.fields.status.name}
           </span>
         </td>
-        <td>{transitionsWrapper}</td>
       </tr>
     );
   });
@@ -112,9 +69,6 @@ async function init() {
     </div>,
     activitiesNode
   );
-
-  // Handle clicks on Jira transitions buttons
-  //delegate('.linked-jira .jira-transition', 'click', issueTransition);
 }
 
 features.add({
